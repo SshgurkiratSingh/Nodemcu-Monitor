@@ -1,5 +1,4 @@
 import React from "react";
-
 import Link from "next/link";
 const Navbar = () => {
   return (
@@ -10,7 +9,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex-none">
-        <button className="btn btn-square ">Customisation</button>
+        <button className="btn  ">Customisation</button>
       </div>
     </div>
   );

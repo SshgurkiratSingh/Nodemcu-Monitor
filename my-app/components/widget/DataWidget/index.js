@@ -1,5 +1,5 @@
 import React from "react";
-import "./widget.css";
+
 const DataWidget = ({ heading, description, value, maxValue, unit, bar }) => {
   const valueStyle =
     value > maxValue * 0.66
@@ -12,7 +12,6 @@ const DataWidget = ({ heading, description, value, maxValue, unit, bar }) => {
     "--maxValue": Math.round(maxValue),
   };
 
-  console.log(valueStyle);
   return (
     <article className="cardMain">
       <div className="data-widget m-ring-2 card">

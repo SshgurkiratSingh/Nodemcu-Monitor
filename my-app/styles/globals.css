@@ -1,3 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-image:url("/header.png");
+   min-height: 100vh;
+}
+
 .card {
     position: relative;
     width: 250px;
@@ -105,7 +114,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: conic-gradient(hsl(var(--p)) calc(var(--percentage) * 1%), hsl(var(--s)) 0);
+    background: conic-gradient(hsl(var(--nc)) calc(var(--percentage) * 1%), hsl(var(--s)) 0);
     -webkit-mask: radial-gradient(#0000 55%, #000 0);
     -webkit-mask-mode: alpha;
   }
@@ -117,11 +126,11 @@
     font-size: 3rem;
   }
   .cardMain {
-    
+    max-width:260px;
     border-radius: 20px;
     padding: 5px;
     box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-    background: linear-gradient(-45deg, #264653, #0d3b66, #000000, #001d3d);
+    background: linear-gradient(-45deg, #264653, #2b2d42, #000000, #001d3d);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
   }
