@@ -14,6 +14,10 @@ export default function Home() {
         const response = await fetch("http://localhost:3000/api/get");
         const jsonData = await response.json();
         console.log(jsonData);
+        updateVal1(jsonData.value1);
+        updateVal2(jsonData.value2);
+        updateVal3(jsonData.value3);
+        updateVal4(jsonData.value4);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -21,7 +25,7 @@ export default function Home() {
 
     fetchData();
 
-    const interval = setInterval(fetchData, 3000);
+    const interval = setInterval(fetchData, 1000);
     return () => clearInterval(interval);
   }, []);
 
