@@ -1,26 +1,42 @@
 import React from "react";
-
+import "./widget.css";
 const DataWidget = ({ heading, description, value, maxValue, unit, bar }) => {
-  console.log(value);
+  const valueStyle =
+    value > maxValue * 0.66
+      ? { color: "red" }
+      : value > maxValue * 0.33
+      ? { color: "orange" }
+      : { color: "green" };
+  let styleForGuage = {
+    "--value": Math.round(value),
+    "--maxValue": Math.round(maxValue),
+  };
+
+  console.log(valueStyle);
   return (
-    <div className="data-widget">
-      <h2>{heading}</h2>
-      <p>{description}</p>
-      {bar ? (
-        <div className="bar-chart">
-          <div
-            className="bar"
-            style={{
-              width: `${(value / maxValue) * 100}%`,
-            }}
-          />
+    <article className="cardMain">
+      <div className="data-widget m-ring-2 card">
+        <div className="temporary_text">
+          <center>
+            {heading}:
+            <div style={valueStyle}>
+              {value} {unit}
+            </div>{" "}
+          </center>
         </div>
-      ) : (
-        <div>
-          Value: {value} / {maxValue} {unit}
+        <div class="card_content">
+          <span class="card_title"></span>
+          <span class="card_subtitle">{description} </span>
         </div>
-      )}
-    </div>
+      </div>
+      <center>
+        <div
+          class="p bg-primary text-primary-content border-4 border-primary"
+          id="<%= key %>guage"
+          style={styleForGuage}
+        ></div>
+      </center>
+    </article>
   );
 };
 

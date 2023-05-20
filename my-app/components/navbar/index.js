@@ -5,9 +5,9 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100 ">
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">
+        <Link href="/" className="btn btn-ghost normal-case text-xl">
           Sensor Live Monitoring
-        </a>
+        </Link>
       </div>
       <div className="flex-none">
         <button className="btn btn-square ">Customisation</button>
