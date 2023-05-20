@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div>
       <div className="m-2" />
-      <center>
+      <center className="xl:flex xl:items-center xl:justify-center block">
         <DataWidget
           heading="Data Widget"
           description="This is a sample data widget."
