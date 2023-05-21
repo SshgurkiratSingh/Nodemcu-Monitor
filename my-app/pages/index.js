@@ -4,11 +4,10 @@ import DataWidget from "../components/widget/DataWidget";
 import { React, useState, useEffect } from "react";
 const data = require("../customisation.json");
 export default function Home() {
-  
   const [val1, updateVal1] = useState(550);
   const [val2, updateVal2] = useState(102);
-  const [val3, updateVal3] = useState(550);
-  const [val4, updateVal4] = useState(550);
+  const [val3, updateVal3] = useState(1003);
+  const [val4, updateVal4] = useState(300);
   const [date1, updateDate1] = useState(new Date().toLocaleString());
   const [date2, updateDate2] = useState(new Date().toLocaleString());
   useEffect(() => {
