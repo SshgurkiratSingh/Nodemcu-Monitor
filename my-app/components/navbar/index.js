@@ -8,9 +8,11 @@ const Navbar = () => {
           Sensor Live Monitoring
         </Link>
       </div>
-      <div className="flex-none">
-        <button className="btn  ">Customisation</button>
-      </div>
+      <Link href="/customisation">
+        <div className="flex-none">
+          <button className="btn  ">Customisation</button>
+        </div>
+      </Link>
     </div>
   );
 };
