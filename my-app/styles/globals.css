@@ -126,12 +126,13 @@ body {
     font-size: 3rem;
   }
   .cardMain {
+    margin: 10px;
     max-width:260px;
     border-radius: 20px;
     padding: 5px;
     box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-    background: linear-gradient(-45deg, #264653, #2b2d42, #000000, #001d3d);
-	background-size: 100% 100%;
+    background: linear-gradient(-45deg, #2b5168, #99d98c, #743a7d, #a7a323,#21394b);
+	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
   }
   

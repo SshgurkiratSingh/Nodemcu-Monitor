@@ -23,14 +23,14 @@ const DataWidget = ({ heading, description, value, maxValue, unit, bar }) => {
             </div>{" "}
           </center>
         </div>
-        <div class="card_content">
-          <span class="card_title"></span>
-          <span class="card_subtitle">{description} </span>
+        <div className="card_content">
+          <span className="card_title"></span>
+          <span className="card_subtitle">{description} </span>
         </div>
       </div>
       <center>
         <div
-          class="p bg-primary text-primary-content border-4 border-primary"
+          className="p bg-primary text-primary-content border-4 border-primary"
           id="<%= key %>guage"
           style={styleForGuage}
         ></div>
