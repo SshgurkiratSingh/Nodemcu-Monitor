@@ -8,18 +8,23 @@ export default function Home() {
   const [val2, updateVal2] = useState(102);
   const [val3, updateVal3] = useState(1003);
   const [val4, updateVal4] = useState(300);
-  const [date1, updateDate1] = useState(new Date().toLocaleString());
-  const [date2, updateDate2] = useState(new Date().toLocaleString());
+  const [date1, updateDate1] = useState("");
+  const [date2, updateDate2] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch("http://localhost:3000/api/get");
         const jsonData = await response.json();
-        console.log(jsonData);
+
         updateVal1(jsonData.value1);
         updateVal2(jsonData.value2);
         updateVal3(jsonData.value3);
         updateVal4(jsonData.value4);
+
+        let date1j = new Date(jsonData.date1);
+        let date2j = new Date(jsonData.date2);
+        updateDate1(date1j.toLocaleString());
+        updateDate2(date2j.toLocaleString());
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -33,6 +38,22 @@ export default function Home() {
 
   return (
     <div>
+      <div>
+        <center className="flex xl:items-center xl:justify-center">
+          <div className="stats shadow">
+            <div className="stat ">
+              <div className="stat-title">Last Sensor 1 & 2 updated</div>
+              <div className="stat-value">{date1}</div>
+              <div className="stat-desc"></div>
+            </div>
+            <div className="stat">
+              <div className="stat-title">Last Sensor 3 & 4 updated</div>
+              <div className="stat-value">{date2}</div>
+              <div className="stat-desc"></div>
+            </div>
+          </div>
+        </center>
+      </div>
       <div className="m-2" />
       <center className="xl:flex xl:items-center xl:justify-center block">
         <DataWidget
