@@ -10,10 +10,23 @@ export default function Home() {
   const [val4, updateVal4] = useState(300);
   const [date1, updateDate1] = useState("");
   const [date2, updateDate2] = useState("");
+  let link = "http://localhost:3000/api/get";
   useEffect(() => {
+    const fetchLink = async () => {
+      try {
+        const res = await fetch("/api/start");
+        const json = await res.json();
+
+        link = json.fetchServer;
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchLink();
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/get");
+        const response = await fetch(link);
+        console.log(link);
         const jsonData = await response.json();
 
         updateVal1(jsonData.value1);
