@@ -26,7 +26,7 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const response = await fetch(link);
-        console.log(link);
+
         const jsonData = await response.json();
 
         updateVal1(jsonData.value1);
