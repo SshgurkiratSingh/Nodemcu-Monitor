@@ -73,41 +73,41 @@ export default function Home() {
         <Link href="/history/value1">
           {" "}
           <DataWidget
-            heading={data.sensor.s1.title}
-            description={data.sensor.s1.description}
+            heading={data.sensor.value1.title}
+            description={data.sensor.value1.description}
             value={val1}
-            maxValue={data.sensor.s1.maxValue}
-            unit={data.sensor.s1.unit}
+            maxValue={data.sensor.value1.maxValue}
+            unit={data.sensor.value1.unit}
             bar={true}
           />
         </Link>
         <Link href="/history/value2">
           <DataWidget
-            heading={data.sensor.s2.title}
-            description={data.sensor.s2.description}
+            heading={data.sensor.value2.title}
+            description={data.sensor.value2.description}
             value={val2}
-            maxValue={data.sensor.s2.maxValue}
-            unit={data.sensor.s2.unit}
+            maxValue={data.sensor.value2.maxValue}
+            unit={data.sensor.value2.unit}
             bar={true}
           />
         </Link>
         <Link href="/history/value3">
           <DataWidget
-            heading={data.sensor.s3.title}
-            description={data.sensor.s3.description}
+            heading={data.sensor.value3.title}
+            description={data.sensor.value3.description}
             value={val3}
-            maxValue={data.sensor.s3.maxValue}
-            unit={data.sensor.s3.unit}
+            maxValue={data.sensor.value3.maxValue}
+            unit={data.sensor.value3.unit}
             bar={true}
           />
         </Link>
         <Link href="/history/value4">
           <DataWidget
-            heading={data.sensor.s4.title}
-            description={data.sensor.s4.description}
+            heading={data.sensor.value4.title}
+            description={data.sensor.value4.description}
             value={val4}
-            maxValue={data.sensor.s4.maxValue}
-            unit={data.sensor.s4.unit}
+            maxValue={data.sensor.value4.maxValue}
+            unit={data.sensor.value4.unit}
             bar={true}
           />
         </Link>
