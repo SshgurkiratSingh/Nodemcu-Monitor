@@ -2,6 +2,7 @@ import Head from "next/head";
 
 import DataWidget from "../components/widget/DataWidget";
 import { React, useState, useEffect } from "react";
+import Link from "next/link";
 const data = require("../customisation.json");
 export default function Home() {
   const [val1, updateVal1] = useState(550);
@@ -69,38 +70,47 @@ export default function Home() {
       </div>
       <div className="m-2" />
       <center className="xl:flex xl:items-center xl:justify-center block">
-        <DataWidget
-          heading={data.sensor.s1.title}
-          description={data.sensor.s1.description}
-          value={val1}
-          maxValue={data.sensor.s1.maxValue}
-          unit={data.sensor.s1.unit}
-          bar={true}
-        />
-        <DataWidget
-          heading={data.sensor.s2.title}
-          description={data.sensor.s2.description}
-          value={val2}
-          maxValue={data.sensor.s2.maxValue}
-          unit={data.sensor.s2.unit}
-          bar={true}
-        />
-        <DataWidget
-          heading={data.sensor.s3.title}
-          description={data.sensor.s3.description}
-          value={val3}
-          maxValue={data.sensor.s3.maxValue}
-          unit={data.sensor.s3.unit}
-          bar={true}
-        />
-        <DataWidget
-          heading={data.sensor.s4.title}
-          description={data.sensor.s4.description}
-          value={val4}
-          maxValue={data.sensor.s4.maxValue}
-          unit={data.sensor.s4.unit}
-          bar={true}
-        />
+        <Link href="/history/value1">
+          {" "}
+          <DataWidget
+            heading={data.sensor.s1.title}
+            description={data.sensor.s1.description}
+            value={val1}
+            maxValue={data.sensor.s1.maxValue}
+            unit={data.sensor.s1.unit}
+            bar={true}
+          />
+        </Link>
+        <Link href="/history/value2">
+          <DataWidget
+            heading={data.sensor.s2.title}
+            description={data.sensor.s2.description}
+            value={val2}
+            maxValue={data.sensor.s2.maxValue}
+            unit={data.sensor.s2.unit}
+            bar={true}
+          />
+        </Link>
+        <Link href="/history/value3">
+          <DataWidget
+            heading={data.sensor.s3.title}
+            description={data.sensor.s3.description}
+            value={val3}
+            maxValue={data.sensor.s3.maxValue}
+            unit={data.sensor.s3.unit}
+            bar={true}
+          />
+        </Link>
+        <Link href="/history/value4">
+          <DataWidget
+            heading={data.sensor.s4.title}
+            description={data.sensor.s4.description}
+            value={val4}
+            maxValue={data.sensor.s4.maxValue}
+            unit={data.sensor.s4.unit}
+            bar={true}
+          />
+        </Link>
       </center>
     </div>
   );
