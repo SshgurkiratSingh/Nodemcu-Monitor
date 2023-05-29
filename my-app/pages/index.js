@@ -5,10 +5,10 @@ import { React, useState, useEffect } from "react";
 import Link from "next/link";
 const data = require("../customisation.json");
 export default function Home() {
-  const [val1, updateVal1] = useState(550);
-  const [val2, updateVal2] = useState(102);
-  const [val3, updateVal3] = useState(1003);
-  const [val4, updateVal4] = useState(300);
+  const [val1, updateVal1] = useState("Fetching");
+  const [val2, updateVal2] = useState("Fetching");
+  const [val3, updateVal3] = useState("Fetching");
+  const [val4, updateVal4] = useState("Fetching");
   const [date1, updateDate1] = useState("");
   const [date2, updateDate2] = useState("");
   let link = "http://localhost:3000/api/get";

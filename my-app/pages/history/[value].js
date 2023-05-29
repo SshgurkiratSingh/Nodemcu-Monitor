@@ -1,9 +1,13 @@
 import { useRouter } from "next/router";
 import { useEffect, useState, useRef } from "react";
 import { Chart } from "chart.js/auto";
+import { set } from "date-fns";
 const dd = require("../../customisation.json");
 
 export default function HistoryPage() {
+  const [current, setCurrent] = useState(1);
+  const [perPage, setPerPage] = useState(10);
+  const [maxPage, setMaxPage] = useState(5);
   const router = useRouter();
   const { value } = router.query;
   const [data, setData] = useState(null);
@@ -13,20 +17,23 @@ export default function HistoryPage() {
     // Fetch data from the API endpoint
     const fetchData = async () => {
       const response = await fetch(
-        `http://192.168.1.100:3000/api/history/${value}`
+        `http://192.168.1.100:3000/api/history/${value}?page=${current}&limit=${perPage}`
       );
       const jsonData = await response.json();
       setData(jsonData);
     };
 
     fetchData();
-
-    // Refresh data every 10 seconds
-    const interval = setInterval(fetchData, 30000);
-
-    return () => clearInterval(interval); // Clean up interval on component unmount
-  }, [value]);
-
+  }, [value, current, perPage]);
+  const goToPreviousPage = () => {
+    if (current > 1) {
+      setCurrent(current - 1);
+    }
+  };
+  const goToNextPage = () => {
+    setCurrent(current + 1);
+    setMaxPage(data["TotalPages"]);
+  };
   useEffect(() => {
     if (chartRef.current) {
       chartRef.current.destroy();
@@ -34,7 +41,7 @@ export default function HistoryPage() {
 
     if (data) {
       // Get the latest 7 values
-      const latestData = data.slice(-7);
+      const latestData = data["data"];
 
       // Create a new chart
       const ctx = document.getElementById("myChart").getContext("2d");
@@ -51,6 +58,20 @@ export default function HistoryPage() {
               fill: false,
             },
           ],
+        },
+        options: {
+          scales: {
+            x: {
+              ticks: {
+                color: "red",
+              },
+            },
+            y: {
+              ticks: {
+                color: "blue",
+              },
+            },
+          },
         },
       });
     }
@@ -76,7 +97,28 @@ export default function HistoryPage() {
             </div>
           </div>
         </div>
-        <canvas id="myChart"></canvas>
+        <canvas
+          id="myChart"
+          style={{ maxWidth: "600px", maxHeight: "400px" }}
+        ></canvas>
+        <div className="pagination">
+          <span class="badge">{current}</span>
+          <button
+            className="btn"
+            onClick={goToPreviousPage}
+            disabled={current === 1}
+          >
+            Previous
+          </button>
+          <button
+            className="btn"
+            onClick={goToNextPage}
+            disabled={current === maxPage}
+          >
+            Next Page
+          </button>
+          <span class="badge">{maxPage}</span>
+        </div>
         {data ? (
           <div className="overflow-x-auto">
             <table className="table w-full">
@@ -88,7 +130,7 @@ export default function HistoryPage() {
                 </tr>
               </thead>
               <tbody>
-                {data.map((entry, index) => (
+                {data["data"].map((entry, index) => (
                   <tr className="hover" key={index}>
                     <th scope="row">{index + 1}</th>
                     <td>{entry.date}</td>
