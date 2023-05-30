@@ -7,7 +7,7 @@ const dd = require("../../customisation.json");
 export default function HistoryPage() {
   const [current, setCurrent] = useState(1);
   const [perPage, setPerPage] = useState(10);
-  const [maxPage, setMaxPage] = useState(5);
+
   const router = useRouter();
   const { value } = router.query;
   const [data, setData] = useState(null);
@@ -32,7 +32,6 @@ export default function HistoryPage() {
   };
   const goToNextPage = () => {
     setCurrent(current + 1);
-    setMaxPage(data["TotalPages"]);
   };
   useEffect(() => {
     if (chartRef.current) {
@@ -110,14 +109,21 @@ export default function HistoryPage() {
           >
             Previous
           </button>
-          <button
-            className="btn"
-            onClick={goToNextPage}
-            disabled={current === maxPage}
-          >
-            Next Page
-          </button>
-          <span class="badge">{maxPage}</span>
+
+          {data ? (
+            <>
+              <button
+                className="btn"
+                onClick={goToNextPage}
+                disabled={current === data.totalPages}
+              >
+                Next Page
+              </button>
+              <span class="badge">{data.totalPages}</span>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
         {data ? (
           <div className="overflow-x-auto">
