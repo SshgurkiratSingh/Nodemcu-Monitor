@@ -11,7 +11,8 @@ export default function Home() {
   const [val4, updateVal4] = useState("Fetching");
   const [date1, updateDate1] = useState("");
   const [date2, updateDate2] = useState("");
-  let link = "http://localhost:3000/api/get";
+  let link =
+    "https://expressjs-with-sheet-logging.gurkirat7092.repl.co/api/get";
   useEffect(() => {
     const fetchLink = async () => {
       try {

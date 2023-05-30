@@ -37,5 +37,5 @@
     "hoverSubHeading": "System Status and Data"
     },
     "customMapping": {},
-    "fetchServer": "http://192.168.1.100:3000/api/get"
+    "fetchServer": "https://expressjs-with-sheet-logging.gurkirat7092.repl.co/api/get"
     }

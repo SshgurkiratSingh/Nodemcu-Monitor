@@ -17,7 +17,7 @@ export default function HistoryPage() {
     // Fetch data from the API endpoint
     const fetchData = async () => {
       const response = await fetch(
-        `http://192.168.1.100:3000/api/history/${value}?page=${current}&limit=${perPage}`
+        `https://expressjs-with-sheet-logging.gurkirat7092.repl.co/api/history/${value}?page=${current}&limit=${perPage}`
       );
       const jsonData = await response.json();
       setData(jsonData);
