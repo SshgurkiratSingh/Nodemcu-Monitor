@@ -117,15 +117,15 @@ export default function HistoryPage() {
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth={2}
+                strokeWidth="2"
                 d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
             <div>
               <h3 className="font-bold">New message!</h3>
               <div className="text-xs">
-                It's been more than a minute since this was last updated. Try
-                refreshing!
+                It&apos;s been more than a minute since this is last updated.
+                Try refreshing!
               </div>
             </div>
           </div>
@@ -228,10 +228,6 @@ export default function HistoryPage() {
           </ul>
         </div>
       </div>
-
-      <style jsx>{`
-        /* Add your custom styles here */
-      `}</style>
     </div>
   );
 }
