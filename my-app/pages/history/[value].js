@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState, useRef } from "react";
 import { Chart } from "chart.js/auto";
 import Link from "next/link";
+import Head from "next/head";
 
 const dd = require("../../customisation.json");
 
@@ -105,6 +106,9 @@ export default function HistoryPage() {
 
   return (
     <div>
+      <Head>
+        <title>Sensor History Page</title>
+      </Head>
       {timeAlert && (
         <div className="alert shadow-lg">
           <div className="flex">

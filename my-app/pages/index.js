@@ -53,6 +53,9 @@ export default function Home() {
 
   return (
     <div>
+      <Head>
+        <title>Home Page</title>
+      </Head>
       <div>
         <center className="flex xl:items-center xl:justify-center">
           <div className="stats shadow">

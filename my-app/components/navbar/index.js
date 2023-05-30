@@ -1,6 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 const Navbar = () => {
+  const Router = useRouter();
+
   return (
     <div className="navbar bg-base-100 ">
       <div className="flex-1">
@@ -8,11 +12,19 @@ const Navbar = () => {
           Sensor Live Monitoring
         </Link>
       </div>
-      <Link href="/customisation">
-        <div className="flex-none">
-          <button className="btn  ">Customisation</button>
-        </div>
-      </Link>
+      {Router.pathname === "/" ? (
+        <Link href="/customisation">
+          <div className="flex-none">
+            <button className="btn  ">Customisation</button>
+          </div>
+        </Link>
+      ) : (
+        <Link href="/">
+          <div className="flex-none">
+            <button className="btn  ">Home</button>
+          </div>
+        </Link>
+      )}
     </div>
   );
 };

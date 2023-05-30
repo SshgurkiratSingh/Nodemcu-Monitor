@@ -87,11 +87,6 @@ const customisation = () => {
         </div>
 
         <div className="form-control w-full max-w-xs"></div>
-        <Link href="/">
-          <div id="home" className="btn btn-md">
-            Home
-          </div>
-        </Link>
       </center>
     </div>
   );
