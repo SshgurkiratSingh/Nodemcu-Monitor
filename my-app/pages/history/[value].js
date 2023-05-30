@@ -2,17 +2,21 @@ import { useRouter } from "next/router";
 import { useEffect, useState, useRef } from "react";
 import { Chart } from "chart.js/auto";
 import { set } from "date-fns";
+import Link from "next/link";
+
 const dd = require("../../customisation.json");
 
 export default function HistoryPage() {
   const [current, setCurrent] = useState(1);
   const [perPage, setPerPage] = useState(10);
-
+  const [timeAlert, setTimeAlert] = useState(false);
   const router = useRouter();
   const { value } = router.query;
   const [data, setData] = useState(null);
   const chartRef = useRef(null);
-
+  const handleRangeChange = (event) => {
+    setPerPage(parseInt(event.target.value));
+  };
   useEffect(() => {
     // Fetch data from the API endpoint
     const fetchData = async () => {
@@ -22,7 +26,17 @@ export default function HistoryPage() {
       const jsonData = await response.json();
       setData(jsonData);
     };
+    const startTime = Date.now();
 
+    const interval = setInterval(() => {
+      const currentTime = Date.now();
+      const elapsedTime = currentTime - startTime;
+      const elapsedMinutes = Math.floor(elapsedTime / 60000);
+
+      if (elapsedMinutes >= 1) {
+        setTimeAlert(true);
+      }
+    }, 1000);
     fetchData();
   }, [value, current, perPage]);
   const goToPreviousPage = () => {
@@ -52,7 +66,7 @@ export default function HistoryPage() {
             {
               data: latestData.map((entry) => entry.value),
               label: "Sensor",
-              borderColor: "#3e95cd",
+              borderColor: "#dca54a",
               backgroundColor: "#7bb6dd",
               fill: false,
             },
@@ -67,7 +81,7 @@ export default function HistoryPage() {
             },
             y: {
               ticks: {
-                color: "blue",
+                color: "#dca54a",
               },
             },
           },
@@ -84,6 +98,37 @@ export default function HistoryPage() {
 
   return (
     <div>
+      {timeAlert ? (
+        <div class="alert shadow-lg">
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="stroke-info flex-shrink-0 w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              ></path>
+            </svg>
+            <div>
+              <h3 class="font-bold">New message!</h3>
+              <div class="text-xs">
+                It's been more than a minute since this is last updated. Try
+                refreshing!
+              </div>
+            </div>
+          </div>
+          <div class="flex-none">
+            <kbd className="kbd">ctrl</kbd>+<kbd className="kbd">R</kbd>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
       <center>
         <div className="ccc-container">
           <div className="ccc">
@@ -92,7 +137,7 @@ export default function HistoryPage() {
             </div>
             <div className="content">
               <p className="heading">{sensorDescription}</p>
-              <p>{sensorUnit}</p>
+              <p>unit in {sensorUnit}</p>
             </div>
           </div>
         </div>
@@ -150,6 +195,36 @@ export default function HistoryPage() {
           <p className="text-center">Loading...</p>
         )}
       </center>
+      <div className="flex flex-col items-center justify-center">
+        <div className="dda">
+          {" "}
+          <input
+            type="range"
+            min="0"
+            max="30"
+            value={perPage}
+            className="range"
+            step="10"
+            onChange={handleRangeChange}
+          />
+          <div className="w-full flex justify-between text-xs px-2">
+            <span>0</span>
+            <span>10</span>
+            <span>20</span>
+            <span>30</span>
+          </div>
+        </div>
+        <div className="text-sm  breadcrumbs">
+          <ul className="">
+            <li>
+              <Link href="/"> Home</Link>
+            </li>
+            <li>
+              <a>{value}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
