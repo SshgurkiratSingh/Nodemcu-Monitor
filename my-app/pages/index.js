@@ -55,6 +55,7 @@ export default function Home() {
     <div>
       <Head>
         <title>Home Page</title>
+        <link rel="icon" href="/logo.png" />
       </Head>
       <div>
         <center className="flex xl:items-center xl:justify-center">
