@@ -27,10 +27,10 @@ const customisation = () => {
               name="select"
               className="select select-accent w-full max-w-xs"
             >
-              <option value="s1">Sensor 1</option>
-              <option value="s2">Sensor 2</option>
-              <option value="s3">Sensor 3</option>
-              <option value="s4">Sensor 4</option>
+              <option value="value1">Sensor 1</option>
+              <option value="value2">Sensor 2</option>
+              <option value="value3">Sensor 3</option>
+              <option value="value4">Sensor 4</option>
             </select>
 
             <label className="label-text" htmlFor="title">

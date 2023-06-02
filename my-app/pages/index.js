@@ -1,9 +1,8 @@
 import Head from "next/head";
-
 import DataWidget from "../components/widget/DataWidget";
 import { React, useState, useEffect } from "react";
 import Link from "next/link";
-const data = require("../customisation.json");
+
 export default function Home() {
   const [val1, updateVal1] = useState("Fetching");
   const [val2, updateVal2] = useState("Fetching");
@@ -13,23 +12,25 @@ export default function Home() {
   const [date2, updateDate2] = useState("");
   let link =
     "https://expressjs-with-sheet-logging.gurkirat7092.repl.co/api/get";
+
   useEffect(() => {
     const fetchLink = async () => {
       try {
         const res = await fetch("/api/start");
         const json = await res.json();
-
         link = json.fetchServer;
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetchLink();
+
     const fetchData = async () => {
       try {
         const response = await fetch(link);
-
         const jsonData = await response.json();
+        const data = await fetch("/api/getData");
+        const customisation = await data.json();
 
         updateVal1(jsonData.value1);
         updateVal2(jsonData.value2);
@@ -40,6 +41,8 @@ export default function Home() {
         let date2j = new Date(jsonData.date2);
         updateDate1(date1j.toLocaleString());
         updateDate2(date2j.toLocaleString());
+
+        updateData(customisation);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -50,6 +53,12 @@ export default function Home() {
     const interval = setInterval(fetchData, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  const [data, updateData] = useState(null);
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -76,7 +85,6 @@ export default function Home() {
       <div className="m-2" />
       <center className="xl:flex xl:items-center xl:justify-center block">
         <Link href="/history/value1">
-          {" "}
           <DataWidget
             heading={data.sensor.value1.title}
             description={data.sensor.value1.description}

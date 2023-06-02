@@ -4,8 +4,6 @@ import { Chart } from "chart.js/auto";
 import Link from "next/link";
 import Head from "next/head";
 
-const dd = require("../../customisation.json");
-
 export default function HistoryPage() {
   const [current, setCurrent] = useState(1);
   const [perPage, setPerPage] = useState(10);
@@ -13,6 +11,8 @@ export default function HistoryPage() {
   const router = useRouter();
   const { value } = router.query;
   const [data, setData] = useState(null);
+  const [dd, setDd] = useState(null); // Store dd data
+
   const chartRef = useRef(null);
 
   const handleRangeChange = (event) => {
@@ -28,6 +28,12 @@ export default function HistoryPage() {
       setData(jsonData);
     };
 
+    const fetchDd = async () => {
+      const response = await fetch("/api/getData");
+      const jsonData = await response.json();
+      setDd(jsonData);
+    };
+
     const startTime = Date.now();
 
     const interval = setInterval(() => {
@@ -41,6 +47,7 @@ export default function HistoryPage() {
     }, 1000);
 
     fetchData();
+    fetchDd();
 
     return () => {
       clearInterval(interval);
@@ -98,11 +105,10 @@ export default function HistoryPage() {
     }
   }, [data]);
 
-  const sensorTitle = dd.sensor[value] ? dd.sensor[value].title : "";
-  const sensorDescription = dd.sensor[value]
-    ? dd.sensor[value].description
-    : "";
-  const sensorUnit = dd.sensor[value] ? dd.sensor[value].unit : "";
+  const sensorTitle = dd && dd.sensor[value] ? dd.sensor[value].title : "";
+  const sensorDescription =
+    dd && dd.sensor[value] ? dd.sensor[value].description : "";
+  const sensorUnit = dd && dd.sensor[value] ? dd.sensor[value].unit : "";
 
   return (
     <div>
