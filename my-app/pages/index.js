@@ -57,7 +57,13 @@ export default function Home() {
   const [data, updateData] = useState(null);
 
   if (!data) {
-    return <div>Loading...</div>;
+    return (
+      <div class="cont">
+        <div class="loader"></div>
+        <div class="loader"></div>
+        <div class="loader"></div>
+      </div>
+    );
   }
 
   return (

@@ -206,7 +206,11 @@ export default function HistoryPage() {
             </table>
           </div>
         ) : (
-          <p className="text-center">Loading...</p>
+          <div class="cont">
+            <div class="loader"></div>
+            <div class="loader"></div>
+            <div class="loader"></div>
+          </div>
         )}
       </center>
       <div className="flex flex-col items-center justify-center">
