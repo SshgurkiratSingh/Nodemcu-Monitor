@@ -72,6 +72,15 @@ const customisation = () => {
               type="text"
               className="input input-bordered input-primary w-full max-w-xs"
             />
+            <label htmlFor="maxValue" className="lb">
+              Key
+            </label>
+            <input
+              name="maxValue"
+              id="maxValue"
+              type="text"
+              className="input input-bordered input-primary w-full max-w-xs"
+            />
 
             <div className="m-2">
               <br />
