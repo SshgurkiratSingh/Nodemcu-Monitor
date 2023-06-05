@@ -10,21 +10,9 @@ export default function Home() {
   const [val4, updateVal4] = useState("Fetching");
   const [date1, updateDate1] = useState("");
   const [date2, updateDate2] = useState("");
-  let link =
-    "https://expressjs-with-sheet-logging.gurkirat7092.repl.co/api/get";
+  const link = "https://expressjs-with-sheet-logging.gurkirat7092.repl.co/api/get";
 
   useEffect(() => {
-    const fetchLink = async () => {
-      try {
-        const res = await fetch("/api/start");
-        const json = await res.json();
-        link = json.fetchServer;
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchLink();
-
     const fetchData = async () => {
       try {
         const response = await fetch(link);
