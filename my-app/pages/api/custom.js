@@ -7,9 +7,7 @@ export default async function handler(req, res) {
 
   await dbConnect();
 
-  if (method != "POST") {
-    res.json({ msg: "permision denied" });
-  }
+ 
   let data = await CustomModel.findOne();
   if (req.body.key === "passwordtocustom") {
     data.sensor[req.body.select].title = req.body.title;
