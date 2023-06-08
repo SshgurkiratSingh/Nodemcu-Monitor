@@ -154,7 +154,7 @@ export default function About() {
             >
               github.com/sshgurkiratsingh.
             </Link>
-            This website's functionality is capable of monitoring data from an
+            This website functionality is capable of monitoring data from an
             ESP8266 sensor, inclusive of temperature, humidity, and light
             levels.Title and description modifications can be performed on this
             page, which can be accessed through the following{" "}
