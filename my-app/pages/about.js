@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function About() {
@@ -147,22 +148,22 @@ export default function About() {
             data store and an API to which nodemcu sends its values. The
             application is hosted on Vercel. The repository can be located on my
             GitHub account at{" "}
-            <a
+            <Link
               className="font-bold text-red-500 hover:underline hover:text-white transition duration-500 ease-in-out"
               href="https://github.com/sshgurkiratsingh"
             >
               github.com/sshgurkiratsingh.
-            </a>
+            </Link>
             This website's functionality is capable of monitoring data from an
             ESP8266 sensor, inclusive of temperature, humidity, and light
             levels.Title and description modifications can be performed on this
             page, which can be accessed through the following{" "}
-            <a
+            <Link
               className="font-bold text-red-500 hover:underline hover:text-white transition duration-500 ease-in-out"
               href="/customisation"
             >
               This Page
-            </a>
+            </Link>
           </p>
         </div>
       </div>
