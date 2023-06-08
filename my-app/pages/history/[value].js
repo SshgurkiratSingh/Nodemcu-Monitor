@@ -76,10 +76,10 @@ export default function HistoryPage() {
       chartRef.current = new Chart(ctx, {
         type: "line",
         data: {
-          labels: latestData.map((entry) => entry.date),
+          labels: latestData.reverse().map((entry) => entry.date),
           datasets: [
             {
-              data: latestData.map((entry) => entry.value),
+              data: latestData.reverse().map((entry) => entry.value),
               label: "Sensor",
               borderColor: "#dca54a",
               backgroundColor: "#7bb6dd",
