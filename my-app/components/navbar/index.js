@@ -13,11 +13,18 @@ const Navbar = () => {
         </Link>
       </div>
       {Router.pathname === "/" ? (
-        <Link href="/customisation">
-          <div className="flex-none">
-            <button className="btn  ">Customisation</button>
-          </div>
-        </Link>
+        <>
+          <Link href="/customisation">
+            <div className="flex-none">
+              <button className="btn  ">Customisation</button>
+            </div>
+          </Link>
+          <Link href="/about">
+            <div className="flex-none">
+              <button className="btn  ">About</button>
+            </div>
+          </Link>
+        </>
       ) : (
         <Link href="/">
           <div className="flex-none">
